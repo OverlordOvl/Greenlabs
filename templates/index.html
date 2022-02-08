@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ page_title }}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<div class="container">
+
+    {% block content %}
+
+        <div class="row mt-5">
+            <div class="col-6">
+                <h1 class="text-center border py-2">All residents</h1>
+                <div class="row mt-3">
+                    {% for resident in residents %}
+                        <div class="col-12 text-center py-1">{{ resident }} - {{ resident.city }}</div>
+                    {% endfor %}
+
+                </div>
+            </div>
+            <div class="col-6">
+                <h1 class="text-center border py-2">Top 5 cities</h1>
+                <div class="row mt-3">
+
+                    {% for city in top_cities %}
+                        <div class="col-12 text-center py-1">
+                            <a href="{% url 'city_detail' city_id=city.id %}">{{ city }} - {{ city.resident_set.count }}</a></div>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+{% extends 'index.html' %}
+
+
+{% block content %}
+    <div class="row mt-5">
+        <div class="col-12 text-center">
+            <h1 class="text-center border py-2">{{ city_name }}</h1>
+        </div>
+    </div>
+    <div class="row mt-3">
+        {% for resident in residents %}
+            <div class="col-12 text-center py-1">{{ resident }}</div>
+        {% endfor %}
+
+    </div>
+{% endblock %}
